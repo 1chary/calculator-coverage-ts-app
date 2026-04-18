@@ -25,6 +25,9 @@ interface CardProps {
 function CalculatorCard({ op }: CardProps) {
   const [a, setA] = useState('');
   const [b, setB] = useState('');
+  const [firstName, setFirstName] = useState('');
+
+  console.log('First name:', firstName); // Unused state variable for coverage
 
   const result = a !== '' && b !== ''
     ? op.fn(parseFloat(a), parseFloat(b))
