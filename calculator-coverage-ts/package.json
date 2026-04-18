@@ -1,0 +1,54 @@
+{
+  "name": "calculator-coverage-ts",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "typescript": "^4.9.5",
+    "babel-plugin-istanbul": "^6.1.1",
+    "@babel/core": "^7.24.0",
+    "babel-loader": "^9.1.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:coverage": "REACT_APP_COVERAGE=true react-scripts build",
+    "test": "react-scripts test --watchAll=false",
+    "coverage": "react-scripts test --watchAll=false --coverage"
+  },
+  "babel": {
+    "env": {
+      "production": {
+        "plugins": [
+          ["babel-plugin-istanbul", {
+            "useInlineSourceMaps": true,
+            "inputSourceMap": true,
+            "include": ["src/**/*.ts", "src/**/*.tsx"],
+            "exclude": ["**/*.spec.*", "**/*.test.*", "**/node_modules/**"]
+          }]
+        ]
+      }
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx",
+      "!src/react-app-env.d.ts"
+    ],
+    "coverageReporters": ["json"]
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  }
+}
